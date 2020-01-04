@@ -14,29 +14,9 @@ These instructions will get you a copy of the project up and running on your loc
 dotnet sdk 3.1
 ```
 
-### Installing
-
-TODO
-
-## Running the tests
-
-TODO
-
-## Deployment
-
-TODO
-
 ## Built With
 
 * [AspNet Core](https://dotnet.microsoft.com/download/dotnet-core/3.1) - The web framework used
-
-## Contributing
-
-TODO
-
-## Versioning
-
-TODO
 
 ## Authors
 
