@@ -25,8 +25,9 @@ namespace PersonalFinance.UnitTests.Users.Domain
             var id = Guid.NewGuid();
             const string firstName = "FirstName";
             const string lastName = "LastName";
+            const string fullName = "FirstName LastName";
             var user = new User(id, firstName, lastName);
-            user.FullName.Should().Be("FirstName LastName");
+            user.FullName.Should().Be(fullName);
         }
     }
 }
