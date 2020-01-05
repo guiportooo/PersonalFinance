@@ -1,0 +1,18 @@
+@baseUrl = https://localhost:5001
+
+# ================= USERS ======================= #
+
+@usersPath = users
+@userId = xxxxxxxxxxxxxxxxxx
+
+### Create a user
+POST {{baseUrl}}/{{usersPath}}
+content-type: application/json
+
+{
+	"firstName": "Fake",
+	"lastName": "User"
+}
+
+### Get a user 
+GET {{baseUrl}}/{{usersPath}}/{{userId}}
