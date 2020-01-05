@@ -12,7 +12,7 @@ namespace PersonalFinance.Users
 
         public UsersController(IUsersService usersService) => _usersService = usersService;
 
-        [HttpGet("{id}", Name = "GetUser")]
+        [HttpGet("{id}", Name = "Get")]
         public async Task<IActionResult> Get(Guid id) =>
             await _usersService.GetUser(id) switch
             {
