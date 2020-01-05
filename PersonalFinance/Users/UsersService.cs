@@ -9,6 +9,7 @@ namespace PersonalFinance.Users
     public interface IUsersService
     {
         Task<Result<UserResponse>> GetUser(Guid id);
+        Task<Result<UserCreatedResponse>> CreateUser(CreateUserRequest request);
     }
 
     public class UsersService : IUsersService
@@ -24,5 +25,10 @@ namespace PersonalFinance.Users
                 { IsSuccess: false } result => Result.Fail<UserResponse>(result.Error),
                 _ => Result.Fail<UserResponse>($"Fail to get user with id {id}.")
             };
+
+        public Task<Result<UserCreatedResponse>> CreateUser(CreateUserRequest request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

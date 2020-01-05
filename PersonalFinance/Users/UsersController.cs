@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PersonalFinance.Users.Models;
 
 namespace PersonalFinance.Users
 {
@@ -17,6 +18,15 @@ namespace PersonalFinance.Users
             await _usersService.GetUser(id) switch
             {
                 { IsSuccess: true } result => Ok(result.Value),
+                { IsSuccess: false } result => BadRequest(result.Error),
+                _ => StatusCode(500)
+            };
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateUserRequest request) =>
+            await _usersService.CreateUser(request) switch
+            {
+                { IsSuccess: true } result => CreatedAtRoute("Get", new {id = result.Value.Id}, result.Value),
                 { IsSuccess: false } result => BadRequest(result.Error),
                 _ => StatusCode(500)
             };
