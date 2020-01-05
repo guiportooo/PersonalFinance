@@ -36,8 +36,8 @@ namespace PersonalFinance.UnitTests.Users
             _mocker.GetMock<IUsersService>()
                 .Setup(x => x.GetUser(id))
                 .ReturnsAsync(ok);
-            var expectedResult = new OkObjectResult(userResponse);
             var result = await _controller.Get(id);
+            var expectedResult = new OkObjectResult(userResponse);
             result.Should().BeEquivalentTo(expectedResult);
         }
 
@@ -50,8 +50,8 @@ namespace PersonalFinance.UnitTests.Users
             _mocker.GetMock<IUsersService>()
                 .Setup(x => x.GetUser(id))
                 .ReturnsAsync(fail);
-            var expectedResult = new BadRequestObjectResult(errorMessage);
             var result = await _controller.Get(id);
+            var expectedResult = new BadRequestObjectResult(errorMessage);
             result.Should().BeEquivalentTo(expectedResult);
         }
 
@@ -67,8 +67,8 @@ namespace PersonalFinance.UnitTests.Users
             _mocker.GetMock<IUsersService>()
                 .Setup(x => x.CreateUser(createUserRequest))
                 .ReturnsAsync(ok);
-            var expectedResult = new CreatedAtRouteResult("Get", new {id}, userCreatedResponse);
             var result = await _controller.Create(createUserRequest);
+            var expectedResult = new CreatedAtRouteResult("Get", new {id}, userCreatedResponse);
             result.Should().BeEquivalentTo(expectedResult);
         }
 
@@ -83,8 +83,8 @@ namespace PersonalFinance.UnitTests.Users
             _mocker.GetMock<IUsersService>()
                 .Setup(x => x.CreateUser(createUserRequest))
                 .ReturnsAsync(fail);
-            var expectedResult = new BadRequestObjectResult(errorMessage);
             var result = await _controller.Create(createUserRequest);
+            var expectedResult = new BadRequestObjectResult(errorMessage);
             result.Should().BeEquivalentTo(expectedResult);
         }
     }

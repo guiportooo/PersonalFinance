@@ -24,5 +24,19 @@ namespace PersonalFinance.Users
                 { } user => Task.FromResult(Result.Ok(user)),
                 _ => Task.FromResult(Result.Fail<User>($"Could not found user with id {id}."))
             };
+
+        public async Task<Result> Add(User user) =>
+            await Get(user.Id) switch
+            {
+                { IsSuccess: true } => Result.Fail($"There is already an user with the id {user.Id}."),
+                { IsSuccess: false } => AddUser(user),
+                _ => Result.Fail("Fail to add user.")
+            };
+
+        private static Result AddUser(User user)
+        {
+            users.Add(user);
+            return Result.Ok();
+        }
     }
 }

@@ -26,9 +26,15 @@ namespace PersonalFinance.Users
                 _ => Result.Fail<UserResponse>($"Fail to get user with id {id}.")
             };
 
-        public Task<Result<UserCreatedResponse>> CreateUser(CreateUserRequest request)
+        public async Task<Result<UserCreatedResponse>> CreateUser(CreateUserRequest request)
         {
-            throw new NotImplementedException();
+            var id = Guid.NewGuid();
+            return await _usersRepository.Add(new User(id, request.FirstName, request.LastName)) switch
+            {
+                { IsSuccess: true } => Result.Ok(new UserCreatedResponse(id)),
+                { IsSuccess: false } result => Result.Fail<UserCreatedResponse>(result.Error),
+                _ => Result.Fail<UserCreatedResponse>("Fail to create user.")
+            };
         }
     }
 }
