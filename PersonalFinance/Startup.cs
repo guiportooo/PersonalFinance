@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PersonalFinance.Users;
+using PersonalFinance.Users.Domain;
 
 namespace PersonalFinance
 {
@@ -21,6 +22,7 @@ namespace PersonalFinance
         {
             services.AddControllers();
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<IUsersRepository, UsersRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
